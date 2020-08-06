@@ -1,0 +1,932 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; stella 0.0.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="stella 0.0.4 documentation" href="index.html"/>
+        <link rel="prev" title="Other Fun Features" href="getting_started/other_features.html"/>  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> stella
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/about.html">About stella</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/shortest_demo.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial.html">Creating A New CNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/other_features.html">Other Fun Features</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">stella</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">stella</a> &raquo;</li>
+      
+    
+      <li>API</li>
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="api">
+<span id="id1"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-stella"></span><dl class="py class">
+<dt id="stella.FlareDataSet">
+<em class="property">class </em><code class="sig-prename descclassname">stella.</code><code class="sig-name descname">FlareDataSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">catalog</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">downloadSet</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cadences</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">frac_balance</span><span class="o">=</span><span class="default_value">0.73</span></em>, <em class="sig-param"><span class="n">training</span><span class="o">=</span><span class="default_value">0.8</span></em>, <em class="sig-param"><span class="n">validation</span><span class="o">=</span><span class="default_value">0.9</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FlareDataSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a directory of files, reformat data to
+create a training set for the convolutional
+neural network.
+Files must be in ‘.npy’ file format and contain
+at minimum the following indices:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0th index = array of time</p></li>
+<li><p>1st index = array of flux</p></li>
+<li><p>2nd index = array of flux errors</p></li>
+</ul>
+</div></blockquote>
+<p>All other indices in the files are ignored.
+This class additionally requires a catalog of flare
+start times for labeling. The flare catalog can be
+in either ‘.txt’ or ‘.csv’ file format. This class will
+be passed into the stella.neural_network() class to
+create and train the neural network.</p>
+<dl class="py method">
+<dt id="stella.FlareDataSet.load_files">
+<code class="sig-name descname">load_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id_keyword</span><span class="o">=</span><span class="default_value">'TIC'</span></em>, <em class="sig-param"><span class="n">ft_keyword</span><span class="o">=</span><span class="default_value">'tpeak'</span></em>, <em class="sig-param"><span class="n">time_offset</span><span class="o">=</span><span class="default_value">2457000.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FlareDataSet.load_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads in light curves from the assigned training set
+directory. Files must be formatted such that the ID
+of each star is first and followed by ‘_’
+(e.g. 123456789_sector09.npy).</p>
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.times">
+<code class="sig-name descname">times</code><a class="headerlink" href="#stella.FlareDataSet.times" title="Permalink to this definition">¶</a></dt>
+<dd><p>An n-dimensional array of times, where n is the
+number of training set files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.fluxes">
+<code class="sig-name descname">fluxes</code><a class="headerlink" href="#stella.FlareDataSet.fluxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>An n-dimensional array of fluxes, where n is the
+number of training set files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.flux_errs">
+<code class="sig-name descname">flux_errs</code><a class="headerlink" href="#stella.FlareDataSet.flux_errs" title="Permalink to this definition">¶</a></dt>
+<dd><p>An n-dimensional array of flux errors, where n is
+the number of training set files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.ids">
+<code class="sig-name descname">ids</code><a class="headerlink" href="#stella.FlareDataSet.ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>An array of light curve IDs for each time/flux/flux_err.
+This is essential for labeling flare events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.id_keyword">
+<code class="sig-name descname">id_keyword</code><a class="headerlink" href="#stella.FlareDataSet.id_keyword" title="Permalink to this definition">¶</a></dt>
+<dd><p>The column header in catalog to identify target ID.
+Default is ‘tic_id’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.ft_keyword">
+<code class="sig-name descname">ft_keyword</code><a class="headerlink" href="#stella.FlareDataSet.ft_keyword" title="Permalink to this definition">¶</a></dt>
+<dd><p>The column header in catalog to identify flare peak time.
+Default is ‘tpeak’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.time_offset">
+<code class="sig-name descname">time_offset</code><a class="headerlink" href="#stella.FlareDataSet.time_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time correction from flare catalog to light curve and is
+necessary when using Max Guenther’s catalog.
+Default is 2457000.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.FlareDataSet.reformat_data">
+<code class="sig-name descname">reformat_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">321</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FlareDataSet.reformat_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reformats the data into <cite>cadences</cite>-sized array and assigns
+a label based on flare times defined in the catalog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>optional</em>) – A random seed to set for randomizing the order of the
+training_matrix after it is constructed. Default is 321.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.training_matrix">
+<code class="sig-name descname">training_matrix</code><a class="headerlink" href="#stella.FlareDataSet.training_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>An n x <cite>cadences</cite>-sized array used as the training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FlareDataSet.labels">
+<code class="sig-name descname">labels</code><a class="headerlink" href="#stella.FlareDataSet.labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>An n-sized array of labels for each row in the training
+data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="stella.ConvNN">
+<em class="property">class </em><code class="sig-prename descclassname">stella.</code><code class="sig-name descname">ConvNN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_dir</span></em>, <em class="sig-param"><span class="n">ds</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">layers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">optimizer</span><span class="o">=</span><span class="default_value">'adam'</span></em>, <em class="sig-param"><span class="n">loss</span><span class="o">=</span><span class="default_value">'binary_crossentropy'</span></em>, <em class="sig-param"><span class="n">metrics</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and trains the convolutional
+neural network.</p>
+<dl class="py method">
+<dt id="stella.ConvNN.calibration">
+<code class="sig-name descname">calibration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">metric_threshold</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN.calibration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforming the rankings output by the CNN into actual probabilities.
+This can only be run for an ensemble of models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>astropy.Table.table</em>) – Table of output predictions from the validation set.</p></li>
+<li><p><strong>metric_threshold</strong> (<em>float</em>) – Defines ranking above which something is considered
+a flares.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.ConvNN.create_model">
+<code class="sig-name descname">create_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN.create_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the Tensorflow keras model with appropriate layers.</p>
+<dl class="py attribute">
+<dt id="stella.ConvNN.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#stella.ConvNN.model" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tensorflow.python.keras.engine.sequential.Sequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.ConvNN.cross_validation">
+<code class="sig-name descname">cross_validation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">epochs</span><span class="o">=</span><span class="default_value">350</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">n_splits</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pred_test</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN.cross_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs cross validation for a given number of K-folds.
+Reassigns the training and validation sets for each fold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Sets random seed for creating CNN model. Default is 2.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of epochs to run each folded model on. Default is 350.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size for training. Default is 64.</p></li>
+<li><p><strong>n_splits</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of folds to perform. Default is 5.</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allows for shuffling in scikitlearn.model_slection.KFold.
+Default is False.</p></li>
+<li><p><strong>pred_test</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allows for predicting on the test set. DO NOT SET TO TRUE UNTIL
+YOU ARE HAPPY WITH YOUR FINAL MODEL. Default is False.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allows the user to save the kfolds table of predictions.
+Defaul it False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="stella.ConvNN.crossval_predval">
+<code class="sig-name descname">crossval_predval</code><a class="headerlink" href="#stella.ConvNN.crossval_predval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Table of predictions on the validation set from each fold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.crossval_predtest">
+<code class="sig-name descname">crossval_predtest</code><a class="headerlink" href="#stella.ConvNN.crossval_predtest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Table of predictions on the test set from each fold. ONLY
+EXISTS IF PRED_TEST IS TRUE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.crossval_histories">
+<code class="sig-name descname">crossval_histories</code><a class="headerlink" href="#stella.ConvNN.crossval_histories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Table of history values from the model run on each fold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.ConvNN.load_model">
+<code class="sig-name descname">load_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">modelname</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'validation'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an already created model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>modelname</strong> (<em>str</em>) – </p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.ConvNN.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">modelname</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">fluxes</span></em>, <em class="sig-param"><span class="n">errs</span></em>, <em class="sig-param"><span class="n">multi_models</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">injected</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in arrays of time and flux and predicts where the flares
+are based on the keras model created and trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>modelname</strong> (<em>str</em>) – Path and filename of a model to load.</p></li>
+<li><p><strong>times</strong> (<em>np.ndarray</em>) – Array of times to predict flares in.</p></li>
+<li><p><strong>fluxes</strong> (<em>np.ndarray</em>) – Array of fluxes to predict flares in.</p></li>
+<li><p><strong>flux_errs</strong> (<em>np.ndarray</em>) – Array of flux errors for predicted flares.</p></li>
+<li><p><strong>injected</strong> (<em>bool</em><em>, </em><em>optional</em>) – Returns predictions instead of setting attribute. Used
+for injection-recovery. Default is False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">model</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>The model input with modelname.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tensorflow.python.keras.engine.sequential.Sequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.predict_time">
+<code class="sig-name descname">predict_time</code><a class="headerlink" href="#stella.ConvNN.predict_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The input times array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.predict_flux">
+<code class="sig-name descname">predict_flux</code><a class="headerlink" href="#stella.ConvNN.predict_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>The input fluxes array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.predict_err">
+<code class="sig-name descname">predict_err</code><a class="headerlink" href="#stella.ConvNN.predict_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>The input flux errors array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.predictions">
+<code class="sig-name descname">predictions</code><a class="headerlink" href="#stella.ConvNN.predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>An array of predictions from the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.ConvNN.train_models">
+<code class="sig-name descname">train_models</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seeds</span><span class="o">=</span><span class="default_value">[2]</span></em>, <em class="sig-param"><span class="n">epochs</span><span class="o">=</span><span class="default_value">350</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pred_test</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.ConvNN.train_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs n number of models with given initial random seeds of
+length n. Also saves each model run to a hidden ~/.stella
+directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seeds</strong> (<em>np.array</em>) – Array of random seed starters of length n, where
+n is the number of models you want to run.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of epochs to train for. Default is 350.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Setting the batch size for the training. Default
+is 64.</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allows for shuffling of the training set when fitting
+the model. Default is False.</p></li>
+<li><p><strong>pred_test</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allows for predictions on the test set. DO NOT SET TO
+TRUE UNTIL YOU’VE DECIDED ON YOUR FINAL MODEL. Default
+is False.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Saves the predictions and histories of from each model
+in an ascii table to the specified output directory.
+Default is False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="stella.ConvNN.history_table">
+<code class="sig-name descname">history_table</code><a class="headerlink" href="#stella.ConvNN.history_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the metric values for each model run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.val_pred_table">
+<code class="sig-name descname">val_pred_table</code><a class="headerlink" href="#stella.ConvNN.val_pred_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predictions on the validation set from each run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.ConvNN.test_pred_table">
+<code class="sig-name descname">test_pred_table</code><a class="headerlink" href="#stella.ConvNN.test_pred_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predictions on the test set from each run. Must set
+pred_test = True, or else it is an empty table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="stella.FitFlares">
+<em class="property">class </em><code class="sig-prename descclassname">stella.</code><code class="sig-name descname">FitFlares</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">flux</span></em>, <em class="sig-param"><span class="n">flux_err</span></em>, <em class="sig-param"><span class="n">predictions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FitFlares" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the predictions from the neural network
+and identifies flaring events based on consecutive
+points. Users define a given probability threshold
+for accpeting a flare event as real.</p>
+<dl class="py method">
+<dt id="stella.FitFlares.get_init_guesses">
+<code class="sig-name descname">get_init_guesses</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">groupings</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">flux</span></em>, <em class="sig-param"><span class="n">err</span></em>, <em class="sig-param"><span class="n">prob</span></em>, <em class="sig-param"><span class="n">maskregion</span></em>, <em class="sig-param"><span class="n">region</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FitFlares.get_init_guesses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Guesses at the initial t0 and amplitude based on
+probability groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groupings</strong> (<em>np.ndarray</em>) – Group of indices for a single flare event.</p></li>
+<li><p><strong>time</strong> (<em>np.array</em>) – </p></li>
+<li><p><strong>flux</strong> (<em>np.array</em>) – </p></li>
+<li><p><strong>err</strong> (<em>np.array</em>) – </p></li>
+<li><p><strong>prob</strong> (<em>np.array</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tpeaks</strong> (<em>np.ndarray</em>) – Array of tpeaks for each flare group.</p></li>
+<li><p><strong>amps</strong> (<em>np.ndarray</em>) – Array of amplitudes at each tpeak.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.FitFlares.group_inds">
+<code class="sig-name descname">group_inds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FitFlares.group_inds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Groups regions marked as flares (&gt; prob_threshold) for
+flare fitting. Indices within 4 of each other are grouped
+as one flare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>results</strong> – An array of arrays, which are groups of indices
+supposedly attributed with a single flare.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.FitFlares.identify_flare_peaks">
+<code class="sig-name descname">identify_flare_peaks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.FitFlares.identify_flare_peaks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds where the predicted value is above the threshold
+as a flare candidate. Groups consecutive indices as one
+flaring event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The probability threshold for believing an event
+is a flare. Default is 0.5.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="stella.FitFlares.treshold">
+<code class="sig-name descname">treshold</code><a class="headerlink" href="#stella.FitFlares.treshold" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stella.FitFlares.flare_table">
+<code class="sig-name descname">flare_table</code><a class="headerlink" href="#stella.FitFlares.flare_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>A table of flare times, amplitudes, and equivalent
+durations. Equivalent duration given in units of days.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="stella.MeasureProt">
+<em class="property">class </em><code class="sig-prename descclassname">stella.</code><code class="sig-name descname">MeasureProt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDs</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">flux</span></em>, <em class="sig-param"><span class="n">flux_err</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for measuring rotation periods.</p>
+<dl class="py method">
+<dt id="stella.MeasureProt.assign_flag">
+<code class="sig-name descname">assign_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em>, <em class="sig-param"><span class="n">power</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">avg</span></em>, <em class="sig-param"><span class="n">secpow</span></em>, <em class="sig-param"><span class="n">maxperiod</span></em>, <em class="sig-param"><span class="n">orbit_flag</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.assign_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns a flag in the table for which periods are reliable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.MeasureProt.averaged_per_sector">
+<code class="sig-name descname">averaged_per_sector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tab</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.averaged_per_sector" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Looks at targets observed in different sectors and determines</dt><dd><p>which period measured is likely the best period. Adds a column
+to MeasureRotations.LS_results of ‘true_period_days’ for the
+results.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.MeasureProt.chiSquare">
+<code class="sig-name descname">chiSquare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">yerr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.chiSquare" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Calculates chi-square for fitting a Gaussian</dt><dd><p>to the peak of the LS periodogram.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var</strong> (<em>list</em>) – Variables to fit (std and scale for Gaussian curve).</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Mean to fit around.</p></li>
+<li><p><strong>x</strong> (<em>np.array</em>) – </p></li>
+<li><p><strong>y</strong> (<em>np.array</em>) – </p></li>
+<li><p><strong>yerr</strong> (<em>np.array</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>chi-square value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.MeasureProt.fit_LS_peak">
+<code class="sig-name descname">fit_LS_peak</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em>, <em class="sig-param"><span class="n">power</span></em>, <em class="sig-param"><span class="n">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.fit_LS_peak" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the LS periodogram at the peak power.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>np.array</em>) – Array of periods from Lomb Scargle routine.</p></li>
+<li><p><strong>power</strong> (<em>np.array</em>) – Array of powers from the Lomb Scargle routine.</p></li>
+<li><p><strong>arg</strong> (<em>int</em>) – Argmax of the power in the periodogram.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>popt</strong> – Array of best fit values for Gaussian fit.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.MeasureProt.gauss_curve">
+<code class="sig-name descname">gauss_curve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">std</span></em>, <em class="sig-param"><span class="n">scale</span></em>, <em class="sig-param"><span class="n">mu</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.gauss_curve" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Fits a Gaussian to the peak of the LS</dt><dd><p>periodogram.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.array</em>) – </p></li>
+<li><p><strong>std</strong> (<em>float</em>) – Standard deviation of gaussian.</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – Scaling for gaussian.</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Mean to fit around.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Gaussian curve.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.MeasureProt.phase_lightcurve">
+<code class="sig-name descname">phase_lightcurve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">table</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">trough</span><span class="o">=</span><span class="default_value">- 0.5</span></em>, <em class="sig-param"><span class="n">peak</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">kernel_size</span><span class="o">=</span><span class="default_value">101</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.phase_lightcurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds and creates a phase light curve that traces the spots.
+Uses only complete rotations and extrapolates outwards until the
+entire light curve is covered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>astropy.table.Table</em><em>, </em><em>optional</em>) – Used for getting the periods of each light curve. Allows users
+to use already created tables. Default = None. Will search for
+stella.FindTheSpots.LS_results.</p></li>
+<li><p><strong>trough</strong> (<em>float</em><em>, </em><em>optional</em>) – Sets the phase value at the minimum. Default = -0.5.</p></li>
+<li><p><strong>peak</strong> (<em>float</em><em>, </em><em>optional</em>) – Sets the phase value t the maximum. Default = 0.5.</p></li>
+<li><p><strong>kernel_size</strong> (<em>odd float</em><em>, </em><em>optional</em>) – Sets kernel size for median filter smoothing. Default = 15.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="stella.MeasureProt.phases">
+<code class="sig-name descname">phases</code><a class="headerlink" href="#stella.MeasureProt.phases" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.MeasureProt.run_LS">
+<code class="sig-name descname">run_LS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">minf</span><span class="o">=</span><span class="default_value">0.08</span></em>, <em class="sig-param"><span class="n">maxf</span><span class="o">=</span><span class="default_value">10.0</span></em>, <em class="sig-param"><span class="n">spp</span><span class="o">=</span><span class="default_value">50</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.MeasureProt.run_LS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs LS fit for each light curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minf</strong> (<em>float</em><em>, </em><em>optional</em>) – The minimum frequency to search in the LS routine. Default = 1/20.</p></li>
+<li><p><strong>maxf</strong> (<em>float</em><em>, </em><em>optional</em>) – The maximum frequency to search in the LS routine. Default = 1/0.1.</p></li>
+<li><p><strong>spp</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of samples per peak. Default = 50.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="stella.MeasureProt.LS_results">
+<code class="sig-name descname">LS_results</code><a class="headerlink" href="#stella.MeasureProt.LS_results" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>astropy.table.Table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="stella.Visualize">
+<em class="property">class </em><code class="sig-prename descclassname">stella.</code><code class="sig-name descname">Visualize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cnn</span></em>, <em class="sig-param"><span class="n">set</span><span class="o">=</span><span class="default_value">'validation'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.Visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates diagnostic plots for the neural network.</p>
+<dl class="py method">
+<dt id="stella.Visualize.confusion_matrix">
+<code class="sig-name descname">confusion_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">colormap</span><span class="o">=</span><span class="default_value">'inferno'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.Visualize.confusion_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the confusion matrix of true positives,
+true negatives, false positives, and false
+negatives.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em>) – Defines the threshold for positive vs. negative cases.
+Default is 0.5 (50%).</p></li>
+<li><p><strong>colormap</strong> (<em>str</em><em>, </em><em>optional</em>) – Colormap to draw colors from to plot the light curves
+on the confusion matrix. Default is ‘inferno’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.Visualize.loss_acc">
+<code class="sig-name descname">loss_acc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">train_color</span><span class="o">=</span><span class="default_value">'k'</span></em>, <em class="sig-param"><span class="n">val_color</span><span class="o">=</span><span class="default_value">'darkorange'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.Visualize.loss_acc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the loss &amp; accuracy curves for the training
+and validation sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color to plot the training set in. Default is black.</p></li>
+<li><p><strong>val_color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color to plot the validation set in. Default is
+dark orange.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stella.Visualize.precision_recall">
+<code class="sig-name descname">precision_recall</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stella.Visualize.precision_recall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the ensemble-averaged precision recall metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>dictionary</em><em>, </em><em>optional</em>) – Dictionary of parameters to pass into matplotlib.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="getting_started/other_features.html" class="btn btn-neutral" title="Other Fun Features" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019-2020, Adina D. Feinstein.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+  
+
+
+</body>
+</html>
